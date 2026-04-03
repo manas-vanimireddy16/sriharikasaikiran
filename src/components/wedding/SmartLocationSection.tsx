@@ -1,4 +1,5 @@
 import { MapPin, Locate } from "lucide-react";
+import { weddingConfig } from "@/config/wedding";
 
 const SmartLocationSection = () => {
   const handleDetectLocation = () => {
@@ -22,7 +23,7 @@ const SmartLocationSection = () => {
         <Locate className="h-8 w-8 text-gold-dark mx-auto mb-3" />
         <h3 className="font-serif font-semibold text-base mb-2">Smart Location</h3>
         <p className="text-xs text-muted-foreground mb-4">
-          Detect your current location to find the best train routes to Hyderabad
+          Detect your current location to find the best train routes to {weddingConfig.destinationCity}
         </p>
         <button onClick={handleDetectLocation} className="wedding-btn wedding-btn-gold w-full justify-center">
           <MapPin className="h-4 w-4" />
