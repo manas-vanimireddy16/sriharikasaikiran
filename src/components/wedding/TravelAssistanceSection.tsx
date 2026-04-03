@@ -1,19 +1,23 @@
 import { MessageCircle, HelpCircle } from "lucide-react";
+import { weddingConfig } from "@/config/wedding";
 
 const TravelAssistanceSection = () => {
+  const { whatsappNumber, couple } = weddingConfig;
+
   const handleShareLocation = () => {
+    const fallbackMsg = `Hi! I need help with travel arrangements for the wedding.`;
     if (!navigator.geolocation) {
-      window.open("https://wa.me/919876543210?text=Hi!%20I%20need%20help%20with%20travel%20arrangements%20for%20the%20wedding.", "_blank");
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(fallbackMsg)}`, "_blank");
       return;
     }
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
         const text = `Hi! I'm at https://maps.google.com/?q=${latitude},${longitude} — I need pickup/travel assistance for the wedding.`;
-        window.open(`https://wa.me/919876543210?text=${encodeURIComponent(text)}`, "_blank");
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
       },
       () => {
-        window.open("https://wa.me/919876543210?text=Hi!%20I%20need%20help%20with%20travel%20arrangements%20for%20the%20wedding.", "_blank");
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(fallbackMsg)}`, "_blank");
       }
     );
   };
@@ -32,9 +36,8 @@ const TravelAssistanceSection = () => {
         </button>
       </div>
 
-      {/* Footer */}
       <p className="text-center text-[10px] text-muted-foreground mt-8 mb-4">
-        Made with ❤️ for Rahul & Priya's Wedding
+        Made with ❤️ for {couple.groomName} & {couple.brideName}'s Wedding
       </p>
     </section>
   );

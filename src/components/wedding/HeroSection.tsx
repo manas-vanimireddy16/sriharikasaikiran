@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Music, Music2, CloudSun, CalendarPlus, TrafficCone, Wifi } from "lucide-react";
-
-const WEDDING_DATE = new Date("2025-02-15T10:00:00");
+import { weddingConfig } from "@/config/wedding";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -22,7 +21,7 @@ const HeroSection = () => {
   }, []);
 
   function getTimeLeft() {
-    const diff = WEDDING_DATE.getTime() - Date.now();
+    const diff = weddingConfig.date.getTime() - Date.now();
     if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -33,29 +32,21 @@ const HeroSection = () => {
   }
 
   const handleAddToCalendar = () => {
-    const start = "20250215T100000";
-    const end = "20250215T230000";
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony&dates=${start}/${end}&location=Wedding+Venue&details=You+are+invited+to+our+wedding!`;
+    const { startDateTime, endDateTime, title, description } = weddingConfig.calendar;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDateTime}/${endDateTime}&location=${encodeURIComponent(weddingConfig.city)}&details=${encodeURIComponent(description)}`;
     window.open(url, "_blank");
   };
 
-  const handleWeather = () => {
-    window.open("https://weather.com", "_blank");
-  };
-
-  const handleTraffic = () => {
-    window.open("https://www.google.com/maps/@17.385,78.4867,12z/data=!5m1!1e1", "_blank");
-  };
+  const handleWeather = () => window.open(weddingConfig.weatherUrl, "_blank");
+  const handleTraffic = () => window.open(weddingConfig.trafficUrl, "_blank");
 
   return (
     <section className="relative px-5 pt-12 pb-8 text-center animate-fade-slide-up">
-      {/* Online indicator */}
       <div className="absolute top-4 right-4 flex items-center gap-1.5">
         <span className={`h-2 w-2 rounded-full ${online ? 'bg-sage-dark' : 'bg-maroon'}`} />
         <span className="text-xs text-muted-foreground">{online ? 'Online' : 'Offline'}</span>
       </div>
 
-      {/* Music toggle */}
       <button
         onClick={() => setMusicPlaying(!musicPlaying)}
         className="absolute top-4 left-4 h-9 w-9 rounded-full bg-card border border-border flex items-center justify-center transition-all hover:scale-110"
@@ -64,24 +55,21 @@ const HeroSection = () => {
         {musicPlaying ? <Music className="h-4 w-4 text-maroon" /> : <Music2 className="h-4 w-4 text-muted-foreground" />}
       </button>
 
-      {/* Ornament */}
       <p className="ornament text-2xl mb-2">✦</p>
       <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Wedding Invitation</p>
 
-      {/* Names */}
       <h1 className="font-serif text-4xl font-semibold text-foreground leading-tight mb-1">
-        Rahul
+        {weddingConfig.couple.groomName}
       </h1>
       <p className="ornament text-lg my-1">&</p>
       <h1 className="font-serif text-4xl font-semibold text-foreground leading-tight mb-4">
-        Priya
+        {weddingConfig.couple.brideName}
       </h1>
 
       <p className="text-sm text-muted-foreground mb-1">Are getting married</p>
-      <p className="font-serif text-lg text-maroon font-medium mb-1">Saturday, 15th February 2025</p>
-      <p className="text-sm text-muted-foreground mb-8">Hyderabad, Telangana</p>
+      <p className="font-serif text-lg text-maroon font-medium mb-1">{weddingConfig.displayDate}</p>
+      <p className="text-sm text-muted-foreground mb-8">{weddingConfig.city}</p>
 
-      {/* Countdown */}
       <div className="grid grid-cols-4 gap-3 mb-8">
         {[
           { val: timeLeft.days, label: "Days" },
@@ -96,7 +84,6 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Action buttons */}
       <div className="grid grid-cols-3 gap-2 stagger-children">
         <button onClick={handleWeather} className="wedding-btn wedding-btn-outline flex-col gap-1 py-3">
           <CloudSun className="h-4 w-4 text-gold-dark" />
