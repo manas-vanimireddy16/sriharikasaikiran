@@ -191,7 +191,7 @@ export const weddingConfig = {
             type: "car" as const,
             label: "By Car",
             steps: ["Take NH65 towards Kukatpally", "Exit at KPHB Colony", "Turn left at Forum Mall", "Venue is 500m on the right"],
-            duration: "~45 min from city center",
+            duration: "45 min from city center",
             distance: "18 km",
             cost: "₹200-300 (fuel)",
           },
