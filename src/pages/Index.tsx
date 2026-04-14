@@ -1,5 +1,8 @@
 import HeroSection from "@/components/wedding/HeroSection";
 import EventsSection from "@/components/wedding/EventsSection";
+import GallerySection from "@/components/wedding/GallerySection";
+import StorySection from "@/components/wedding/StorySection";
+import VenueSection from "@/components/wedding/VenueSection";
 import HowToReachSection from "@/components/wedding/HowToReachSection";
 import BookingSection from "@/components/wedding/BookingSection";
 import SmartLocationSection from "@/components/wedding/SmartLocationSection";
@@ -9,10 +12,15 @@ import TravelAssistanceSection from "@/components/wedding/TravelAssistanceSectio
 import SectionDivider from "@/components/wedding/SectionDivider";
 
 const Index = () => (
-  <div className="mobile-wrapper">
+  <div className="mobile-wrapper scroll-smooth">
     <HeroSection />
-    <SectionDivider />
     <EventsSection />
+    <SectionDivider />
+    <GallerySection />
+    <SectionDivider />
+    <StorySection />
+    <SectionDivider />
+    <VenueSection />
     <SectionDivider />
     <HowToReachSection />
     <SectionDivider />

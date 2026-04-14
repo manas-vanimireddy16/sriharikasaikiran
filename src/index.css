@@ -67,6 +67,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
@@ -82,11 +86,11 @@
   .wedding-card {
     background: var(--gradient-card);
     box-shadow: var(--shadow-card);
-    @apply rounded-2xl border border-border p-5;
+    @apply rounded-3xl border border-border p-5;
   }
 
   .wedding-btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 active:scale-95;
     box-shadow: var(--shadow-soft);
   }
 
@@ -101,7 +105,11 @@
   }
 
   .wedding-btn-outline {
-    @apply border border-border bg-card text-foreground;
+    @apply border border-border bg-card text-foreground hover:bg-muted;
+  }
+
+  .hero-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium transition-all duration-300 active:scale-95;
   }
 
   .section-title {
@@ -128,46 +136,22 @@
   }
 }
 
-@keyframes floatIn {
+@keyframes slowZoom {
   from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
     transform: scale(1);
   }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  to {
+    transform: scale(1.1);
+  }
 }
 
 .animate-fade-slide-up {
-  animation: fadeSlideUp 0.6s ease-out forwards;
+  animation: fadeSlideUp 0.8s ease-out forwards;
 }
 
-.animate-float-in {
-  animation: floatIn 0.5s ease-out forwards;
+.animate-slow-zoom {
+  animation: slowZoom 20s ease-in-out infinite alternate;
 }
-
-.animate-shimmer {
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
-}
-
-/* Stagger children */
-.stagger-children > * {
-  opacity: 0;
-  animation: fadeSlideUp 0.5s ease-out forwards;
-}
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
