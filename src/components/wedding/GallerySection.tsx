@@ -42,7 +42,7 @@ const GallerySection = () => {
             <button
               onClick={() => openLightbox(i)}
               className="group relative w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
-              style={{ aspectRatio: i % 3 === 1 ? "3/4" : "1/1" }}
+              style={{ aspectRatio: "1/1" }}
             >
               <img
                 src={src}
