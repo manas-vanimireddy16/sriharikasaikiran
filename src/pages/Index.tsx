@@ -10,9 +10,11 @@ import HostFamilySection from "@/components/wedding/HostFamilySection";
 import AccommodationSection from "@/components/wedding/AccommodationSection";
 import TravelAssistanceSection from "@/components/wedding/TravelAssistanceSection";
 import SectionDivider from "@/components/wedding/SectionDivider";
+import FloatingNav from "@/components/wedding/FloatingNav";
 
 const Index = () => (
   <div className="mobile-wrapper scroll-smooth">
+    <FloatingNav />
     <HeroSection />
     <EventsSection />
     <SectionDivider />
