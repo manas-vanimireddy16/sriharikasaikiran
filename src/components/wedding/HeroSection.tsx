@@ -1,23 +1,14 @@
 import { useState, useEffect } from "react";
-import { Music, Music2, CloudSun, CalendarPlus, TrafficCone, Wifi } from "lucide-react";
+import { CalendarPlus, MapPin, Play, ChevronDown } from "lucide-react";
 import { weddingConfig } from "@/config/wedding";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
-  const [musicPlaying, setMusicPlaying] = useState(false);
-  const [online, setOnline] = useState(navigator.onLine);
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
-    const handleOnline = () => setOnline(true);
-    const handleOffline = () => setOnline(false);
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-    return () => {
-      clearInterval(timer);
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
+    return () => clearInterval(timer);
   }, []);
 
   function getTimeLeft() {
@@ -37,67 +28,92 @@ const HeroSection = () => {
     window.open(url, "_blank");
   };
 
-  const handleWeather = () => window.open(weddingConfig.weatherUrl, "_blank");
-  const handleTraffic = () => window.open(weddingConfig.trafficUrl, "_blank");
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section className="relative px-5 pt-12 pb-8 text-center animate-fade-slide-up">
-      <div className="absolute top-4 right-4 flex items-center gap-1.5">
-        <span className={`h-2 w-2 rounded-full ${online ? 'bg-sage-dark' : 'bg-maroon'}`} />
-        <span className="text-xs text-muted-foreground">{online ? 'Online' : 'Offline'}</span>
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Background with zoom animation */}
+      <div className="absolute inset-0 animate-slow-zoom">
+        <img
+          src={heroBg}
+          alt="Wedding decoration"
+          className="w-full h-full object-cover"
+          width={768}
+          height={1024}
+        />
+      </div>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 py-12 animate-fade-slide-up">
+        <p className="text-xs tracking-[0.4em] uppercase text-white/70 mb-6 font-sans">
+          We're getting married
+        </p>
+
+        <h1 className="font-serif text-5xl font-semibold text-white leading-tight mb-1 drop-shadow-lg">
+          {weddingConfig.couple.groomName}
+        </h1>
+        <p className="font-serif text-2xl text-gold-light my-2">&</p>
+        <h1 className="font-serif text-5xl font-semibold text-white leading-tight mb-6 drop-shadow-lg">
+          {weddingConfig.couple.brideName}
+        </h1>
+
+        <p className="font-serif text-lg text-gold-light font-medium mb-1">
+          {weddingConfig.displayDate}
+        </p>
+        <p className="text-sm text-white/70 mb-8">{weddingConfig.city}</p>
+
+        {/* Countdown */}
+        <div className="grid grid-cols-4 gap-3 mb-10 max-w-xs mx-auto">
+          {[
+            { val: timeLeft.days, label: "Days" },
+            { val: timeLeft.hours, label: "Hours" },
+            { val: timeLeft.minutes, label: "Mins" },
+            { val: timeLeft.seconds, label: "Secs" },
+          ].map(({ val, label }) => (
+            <div key={label} className="backdrop-blur-md bg-white/10 rounded-2xl py-3 px-1 border border-white/20">
+              <p className="font-serif text-2xl font-semibold text-white">{String(val).padStart(2, "0")}</p>
+              <p className="text-[10px] uppercase tracking-wider text-white/60 mt-1">{label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 justify-center flex-wrap">
+          <button
+            onClick={() => scrollToSection("gallery")}
+            className="hero-btn backdrop-blur-md bg-white/15 border border-white/25 text-white"
+          >
+            <Play className="h-3.5 w-3.5" />
+            <span>Gallery</span>
+          </button>
+          <button
+            onClick={() => scrollToSection("venue")}
+            className="hero-btn backdrop-blur-md bg-gold/80 text-foreground border border-gold-light/30"
+          >
+            <MapPin className="h-3.5 w-3.5" />
+            <span>Directions</span>
+          </button>
+          <button
+            onClick={handleAddToCalendar}
+            className="hero-btn backdrop-blur-md bg-white/15 border border-white/25 text-white"
+          >
+            <CalendarPlus className="h-3.5 w-3.5" />
+            <span>Calendar</span>
+          </button>
+        </div>
       </div>
 
+      {/* Scroll indicator */}
       <button
-        onClick={() => setMusicPlaying(!musicPlaying)}
-        className="absolute top-4 left-4 h-9 w-9 rounded-full bg-card border border-border flex items-center justify-center transition-all hover:scale-110"
-        style={{ boxShadow: 'var(--shadow-soft)' }}
+        onClick={() => scrollToSection("events")}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce text-white/50"
       >
-        {musicPlaying ? <Music className="h-4 w-4 text-maroon" /> : <Music2 className="h-4 w-4 text-muted-foreground" />}
+        <ChevronDown className="h-6 w-6" />
       </button>
-
-      <p className="ornament text-2xl mb-2">✦</p>
-      <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Wedding Invitation</p>
-
-      <h1 className="font-serif text-4xl font-semibold text-foreground leading-tight mb-1">
-        {weddingConfig.couple.groomName}
-      </h1>
-      <p className="ornament text-lg my-1">&</p>
-      <h1 className="font-serif text-4xl font-semibold text-foreground leading-tight mb-4">
-        {weddingConfig.couple.brideName}
-      </h1>
-
-      <p className="text-sm text-muted-foreground mb-1">Are getting married</p>
-      <p className="font-serif text-lg text-maroon font-medium mb-1">{weddingConfig.displayDate}</p>
-      <p className="text-sm text-muted-foreground mb-8">{weddingConfig.city}</p>
-
-      <div className="grid grid-cols-4 gap-3 mb-8">
-        {[
-          { val: timeLeft.days, label: "Days" },
-          { val: timeLeft.hours, label: "Hours" },
-          { val: timeLeft.minutes, label: "Minutes" },
-          { val: timeLeft.seconds, label: "Seconds" },
-        ].map(({ val, label }) => (
-          <div key={label} className="wedding-card py-3 px-1 text-center">
-            <p className="font-serif text-2xl font-semibold text-maroon">{String(val).padStart(2, '0')}</p>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">{label}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-3 gap-2 stagger-children">
-        <button onClick={handleWeather} className="wedding-btn wedding-btn-outline flex-col gap-1 py-3">
-          <CloudSun className="h-4 w-4 text-gold-dark" />
-          <span className="text-xs">Weather</span>
-        </button>
-        <button onClick={handleAddToCalendar} className="wedding-btn wedding-btn-gold flex-col gap-1 py-3">
-          <CalendarPlus className="h-4 w-4" />
-          <span className="text-xs">Calendar</span>
-        </button>
-        <button onClick={handleTraffic} className="wedding-btn wedding-btn-outline flex-col gap-1 py-3">
-          <TrafficCone className="h-4 w-4 text-gold-dark" />
-          <span className="text-xs">Traffic</span>
-        </button>
-      </div>
     </section>
   );
 };
