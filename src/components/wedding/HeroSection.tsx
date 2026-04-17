@@ -97,13 +97,13 @@ const HeroSection = () => {
             <MapPin className="h-3.5 w-3.5" />
             <span>Directions</span>
           </button>
-          <button
+          {/* <button
             onClick={handleAddToCalendar}
             className="hero-btn backdrop-blur-md bg-white/15 border border-white/25 text-white"
           >
             <CalendarPlus className="h-3.5 w-3.5" />
             <span>Calendar</span>
-          </button>
+          </button> */}
         </div>
       </div>
 
