@@ -22,11 +22,30 @@ export const weddingConfig = {
   // 💒 Events
   events: [
     {
-      title: "Wedding Ceremony",
+      title: "Haldi 🌼",
+      emoji: "🌼",
+      venue: "Home",
+      address: "10-13, Rajeev Swagruha, Kundapalli, Ramagundam",
+      time: "4:00 PM – 10:00 PM",
+      date: "27-April-2026",
+      mapUrl: "https://maps.app.goo.gl/KUdsVCXKy4Fup6kP6",
+    },
+    {
+      title: "Palaporuka & Kurallu 🎉",
+      emoji: "🎉",
+      venue: "Home",
+      address: "10-13, Rajeev Swagruha, Kundapalli, Ramagundam",
+      time: "6:00 PM – 10:00 PM",
+      date: "28-April-2026",
+      mapUrl: "https://maps.app.goo.gl/KUdsVCXKy4Fup6kP6",
+    },
+    {
+      title: "Wedding Ceremony 💍",
       emoji: "💍",
       venue: "R.R. Gardens",
-      address: "Beside Alekha Theatre, FCI Road, NTPC , Jyothinagar - 505215",
-      time: "10:00 AM – 2:00 PM",
+      address: "Beside Alekhya Theatre, FCI Road, NTPC, Jyothinagar - 505215",
+      time: "10:00 AM – 3:00 PM",
+      date: "29-April-2026",
       mapUrl: "https://maps.app.goo.gl/JbqPmNopymt5NWdE7",
     },
   ],
@@ -40,26 +59,31 @@ export const weddingConfig = {
           {
             type: "car" as const,
             label: "By Car",
-            steps: ["Take NH65 towards Kukatpally", "Exit at KPHB Colony", "Turn left at Forum Mall", "Venue is 500m on the right"],
-            duration: "~45 min from city center",
-            distance: "18 km",
-            cost: "₹200-300 (fuel)",
+            steps: [
+              "Navigate towards Godavarikhani",
+              "Head directly to RR Gardens (NTPC area)",
+              "Use FCI Cross Road as a nearby landmark if needed"
+            ],
           },
           {
             type: "bus" as const,
             label: "By Bus",
-            steps: ["Take TSRTC Bus 216 from Secunderabad", "Alight at Kukatpally Bus Stop", "Walk 10 min towards Forum Mall", "Venue is near Forum Mall"],
-            duration: "~1 hr 15 min",
-            distance: "20 km",
-            cost: "₹35-50",
+            steps: [
+              "Take a bus to Godavarikhani / FCI Cross Road",
+              "Get down at FCI Cross Road",
+              "Take a local auto/Rapido",
+              "Reach RR Gardens (NTPC area)"
+            ],
           },
           {
             type: "train" as const,
             label: "By Train",
-            steps: ["Take MMTS to Kukatpally Station", "Auto from station (5 min)", "Ask for Sri Lakshmi Function Hall"],
-            duration: "~40 min + auto",
-            distance: "15 km",
-            cost: "₹15 + ₹50 auto",
+            steps: [
+              "Take a train to Ramagundam",
+              "Travel towards FCI Cross Road",
+              "Take a local auto/Rapido",
+              "Reach RR Gardens (NTPC area)"
+            ],
           },
         ],
       },
@@ -100,7 +124,7 @@ export const weddingConfig = {
       side: "Groom's Family",
       names: ["Shri.Avula Srinivas", "Smt. Avula Jyothi"],
       address: "Dongaturthi,Peddapalli",
-      phones: ["+91 98765 43210", "+91 98765 43211"],
+      phones: ["+91 9542110809", "+91 8096954621"],
     },
     {
       side: "Bride's Family",
@@ -116,4 +140,5 @@ export const weddingConfig = {
   // 🚆 Smart Location destination
   destinationCity: "Godavarikhani",
 };
+
 

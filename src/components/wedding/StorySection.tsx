@@ -37,8 +37,8 @@ const StorySection = () => {
             </div>
           </div>
           <div className="absolute bottom-4 left-4 right-4 text-left">
-            <p className="text-white/80 text-xs font-sans">Our Pre-Wedding Film</p>
-            <p className="text-white font-serif text-sm font-medium">A love story worth telling</p>
+            <p className="text-white/80 text-xs font-sans">Our Engagement Teaser</p>
+            <p className="text-white font-serif text-sm font-medium">The First Chapter</p>
           </div>
         </button>
       </AnimatedSection>
