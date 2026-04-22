@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
+import gallery1 from "@/assets/gallery-1.jfif";
+// import gallery2 from "@/assets/gallery-2.jpg";
+// import gallery3 from "@/assets/gallery-3.jpg";
+// import gallery4 from "@/assets/gallery-4.jpg";
+// import gallery5 from "@/assets/gallery-5.jpg";
+// import gallery6 from "@/assets/gallery-6.jpg";
 
-const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+const images = [gallery1,];
 const captions = [
-  "Together forever",
-  "A walk in the garden",
-  "Beautiful mehndi",
+  // "Together forever",
+  // "A walk in the garden",
+  // "Beautiful mehndi",
   "Hand in hand",
-  "The ceremony awaits",
-  "Our special day",
+  // "The ceremony awaits",
+  // "Our special day",
 ];
 
 const GallerySection = () => {
