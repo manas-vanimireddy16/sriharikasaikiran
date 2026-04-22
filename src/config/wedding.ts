@@ -22,7 +22,7 @@ export const weddingConfig = {
   // 💒 Events
   events: [
     {
-      title: "Haldi 🌼",
+      title: "Haldi ",
       emoji: "🌼",
       venue: "Home",
       address: "10-13, Rajeev Swagruha, Kundapalli, Ramagundam",
@@ -31,7 +31,7 @@ export const weddingConfig = {
       mapUrl: "https://maps.app.goo.gl/KUdsVCXKy4Fup6kP6",
     },
     {
-      title: "Palaporaka & Kurallu 🌿",
+      title: "Palaporaka & Kurallu ",
       emoji: "🌿",
       venue: "Home",
       address: "10-13, Rajeev Swagruha, Kundapalli, Ramagundam",
@@ -40,7 +40,7 @@ export const weddingConfig = {
       mapUrl: "https://maps.app.goo.gl/KUdsVCXKy4Fup6kP6",
     },
     {
-      title: "Wedding Ceremony 💑",
+      title: "Wedding Ceremony ",
       emoji: "💑",
       venue: "R.R. Gardens",
       address: "Beside Alekhya Theatre, FCI Road, NTPC, Jyothinagar - 505215",
