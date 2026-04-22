@@ -120,17 +120,17 @@ export const weddingConfig = {
   },
   // 👨‍👩‍👦 Host Families
   families: [
-    {
-      side: "Groom's Family",
-      names: ["Shri.Avula Srinivas", "Smt. Avula Jyothi"],
-      address: "Dongaturthi,Peddapalli",
-      phones: ["+91 9542110809", "+91 8096954621"],
-    },
+
     {
       side: "Bride's Family",
       names: ["Shri. Mudutanapalli Srinivas", "Smt. Mudutanapalli UmaRani"],
       address: "Kundanapalli,Ramagundam",
       phones: ["+91 8106540735", "+91 9676954352"],
+    }, {
+      side: "Groom's Family",
+      names: ["Shri.Avula Srinivas", "Smt. Avula Jyothi"],
+      address: "Dongaturthi,Peddapalli",
+      phones: ["+91 9542110809", "+91 8096954621"],
     },
   ],
   // 📱 WhatsApp for Travel Assistance

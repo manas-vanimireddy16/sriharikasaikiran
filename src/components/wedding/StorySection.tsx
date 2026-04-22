@@ -50,7 +50,7 @@
 import { Play } from "lucide-react";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import gallery2 from "@/assets/gallery-2.jpg";
+import gallery2 from "@/assets/gallery-1.jfif";
 import storyVideo from "@/assets/story-video.mp4"; // 👈 your video file
 
 const StorySection = () => {
