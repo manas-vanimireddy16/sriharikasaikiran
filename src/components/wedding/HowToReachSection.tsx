@@ -110,8 +110,8 @@ const HowToReachSection = () => {
               key={t}
               onClick={() => setActiveTab(i)}
               className={`flex-1 py-2.5 rounded-xl text-xs font-medium transition-all duration-300 ${i === activeTab
-                  ? "bg-gold text-foreground shadow-md"
-                  : "bg-card border border-border text-muted-foreground"
+                ? "bg-gold text-foreground shadow-md"
+                : "bg-card border border-border text-muted-foreground"
                 }`}
             >
               {t}
@@ -148,9 +148,9 @@ const HowToReachSection = () => {
 
               {/* Info WITHOUT icons */}
               <div className="flex flex-wrap gap-3 text-[11px] text-muted-foreground mb-3">
-                <span>Duration: {mode.duration}</span>
+                {/* <span>Duration: {mode.duration}</span>
                 <span>Distance: {mode.distance}</span>
-                <span>Cost: {mode.cost}</span>
+                <span>Cost: {mode.cost}</span> */}
               </div>
 
               {/* Navigate button WITHOUT icon */}
