@@ -9,13 +9,7 @@ const StorySection = () => {
   return (
     <section className="px-5 py-10">
       <AnimatedSection>
-        <p className="ornament text-lg mb-2">✦</p>
-        <h2 className="section-title text-center mb-2">
-          A Glimpse of Our Journey
-        </h2>
-        <p className="text-center text-xs text-muted-foreground mb-6">
-          Watch our story unfold
-        </p>
+        <h2 className="text-center mb-2">A Glimpse of Our Journey</h2>
       </AnimatedSection>
 
       <AnimatedSection delay={200}>
@@ -26,15 +20,16 @@ const StorySection = () => {
           {!play ? (
             <button
               onClick={() => setPlay(true)}
-              className="w-full h-full relative"
+              className="w-full h-full group relative"
             >
               <img
                 src={gallery2}
-                alt="thumbnail"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
+
+              {/* Overlay */}
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center">
+                <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition">
                   <Play className="text-white ml-1" />
                 </div>
               </div>
@@ -42,7 +37,7 @@ const StorySection = () => {
           ) : (
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/6codO14bVY4?autoplay=1"
+              src="https://www.youtube.com/embed/6codO14bVY4?autoplay=1&modestbranding=1&rel=0"
               title="Wedding Video"
               allow="autoplay; encrypted-media"
               allowFullScreen
