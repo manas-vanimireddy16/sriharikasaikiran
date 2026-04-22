@@ -51,7 +51,7 @@ import { Play } from "lucide-react";
 import { useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import gallery2 from "@/assets/gallery-1.jfif";
-import storyVideo from "@/assets/story-video.mp4"; // 👈 your video file
+import storyVideo from "@/assets/story-video.mp4";
 
 const StorySection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -59,6 +59,7 @@ const StorySection = () => {
 
   const handlePlay = () => {
     if (videoRef.current) {
+      videoRef.current.muted = false; // ✅ ensure audio works
       videoRef.current.play();
       setIsPlaying(true);
     }
@@ -85,9 +86,11 @@ const StorySection = () => {
           <video
             ref={videoRef}
             src={storyVideo}
-            poster={gallery2} // 👈 thumbnail before play
+            poster={gallery2}
             className="w-full h-full object-cover"
             controls={isPlaying}
+            playsInline
+            preload="metadata"
           />
 
           {/* OVERLAY */}
@@ -100,17 +103,14 @@ const StorySection = () => {
                   onClick={handlePlay}
                   className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                 >
-                  <Play
-                    className="h-7 w-7 text-white ml-1"
-                    fill="white"
-                  />
+                  <Play className="h-7 w-7 text-white ml-1" fill="white" />
                 </button>
               </div>
             </>
           )}
 
           {/* TEXT */}
-          <div className="absolute bottom-4 left-4 right-4 text-left">
+          <div className="absolute bottom-4 left-4 right-4 text-left pointer-events-none">
             <p className="text-white/80 text-xs font-sans">
               Our Engagement Teaser
             </p>
