@@ -1,7 +1,11 @@
+import { useState } from "react";
+import { Play } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import gallery2 from "@/assets/gallery-8.jfif";
 
 const StorySection = () => {
+  const [play, setPlay] = useState(false);
+
   return (
     <section className="px-5 py-10">
       <AnimatedSection>
@@ -19,14 +23,31 @@ const StorySection = () => {
           className="relative w-full overflow-hidden rounded-3xl shadow-lg"
           style={{ aspectRatio: "16/10" }}
         >
-          <iframe
-            className="w-full h-full rounded-3xl"
-            src="https://www.youtube.com/embed/6codO14bVY4"
-            title="Wedding Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          {!play ? (
+            <button
+              onClick={() => setPlay(true)}
+              className="w-full h-full relative"
+            >
+              <img
+                src={gallery2}
+                alt="thumbnail"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <div className="h-16 w-16 rounded-full bg-white/20 flex items-center justify-center">
+                  <Play className="text-white ml-1" />
+                </div>
+              </div>
+            </button>
+          ) : (
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/6codO14bVY4?autoplay=1"
+              title="Wedding Video"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+          )}
         </div>
       </AnimatedSection>
     </section>
