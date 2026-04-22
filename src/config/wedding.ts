@@ -31,8 +31,8 @@ export const weddingConfig = {
       mapUrl: "https://maps.app.goo.gl/KUdsVCXKy4Fup6kP6",
     },
     {
-      title: "Palaporuka & Kurallu 🎉",
-      emoji: "🎉",
+      title: "Palaporaka & Kurallu 🌿",
+      emoji: "🌿",
       venue: "Home",
       address: "10-13, Rajeev Swagruha, Kundapalli, Ramagundam",
       time: "6:00 PM – 10:00 PM",
@@ -40,8 +40,8 @@ export const weddingConfig = {
       mapUrl: "https://maps.app.goo.gl/KUdsVCXKy4Fup6kP6",
     },
     {
-      title: "Wedding Ceremony 💍",
-      emoji: "💍",
+      title: "Wedding Ceremony 💑",
+      emoji: "💑",
       venue: "R.R. Gardens",
       address: "Beside Alekhya Theatre, FCI Road, NTPC, Jyothinagar - 505215",
       time: "10:00 AM – 3:00 PM",
