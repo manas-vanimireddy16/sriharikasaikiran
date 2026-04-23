@@ -37,7 +37,7 @@ const StorySection = () => {
           ) : (
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/6codO14bVY4?autoplay=1&modestbranding=1&rel=0"
+              src="https://youtu.be/RzyuP-DfyPc?si=0u0EOAPcTys5_eVT"
               title="Wedding Video"
               allow="autoplay; encrypted-media"
               allowFullScreen
