@@ -16,7 +16,7 @@ const Index = () => (
   <div className="mobile-wrapper scroll-smooth">
     <FloatingNav />
     <HeroSection />
-    <EventsSection />
+    {/* <EventsSection /> */}
     <SectionDivider />
     <GallerySection />
     <SectionDivider />

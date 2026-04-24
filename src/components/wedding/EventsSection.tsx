@@ -1,14 +1,12 @@
-import { Clock, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { weddingConfig } from "@/config/wedding";
 import AnimatedSection from "./AnimatedSection";
 
 const formatDate = (date) => {
   if (!date) return null;
 
-  // If already formatted like "27-April-2026", return as is
   if (date.includes("-")) return date;
 
-  // If ISO format (recommended)
   return new Date(date).toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
@@ -20,62 +18,68 @@ const EventsSection = () => (
   <section id="events" className="px-5 py-10">
     <AnimatedSection>
       <p className="ornament text-lg mb-2">✦</p>
-      <h2 className="section-title text-center mb-2">Wedding Events</h2>
-      <p className="text-center text-xs text-muted-foreground mb-6">
-        Join us as we celebrate our union
-      </p>
+      <h2 className="section-title text-center mb-6">Wedding Events</h2>
     </AnimatedSection>
 
-    <div className="space-y-4">
-      {weddingConfig.events.map((e, i) => (
-        <AnimatedSection key={e.title} delay={i * 150}>
-          <div className="wedding-card">
+    <div className="space-y-5">
+      {weddingConfig.events.map((event, i) => (
+        <AnimatedSection key={event.title} delay={i * 150}>
 
-            {/* Top Section */}
-            <div className="flex items-center gap-3 mb-3">
-              <div className="h-10 w-10 rounded-xl bg-gold/20 flex items-center justify-center">
-                <span className="text-xl">{e.emoji}</span>
+          {/* ✅ SAME CARD STYLE AS VENUE */}
+          <div className="wedding-card overflow-hidden p-5 rounded-3xl">
+
+            <div className="flex items-start gap-3">
+
+              {/* Icon (same as venue size) */}
+              <div className="h-10 w-10 rounded-xl bg-gold/20 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="text-lg">{event.emoji}</span>
               </div>
-              <div>
-                <h3 className="font-serif text-lg font-semibold text-foreground">
-                  {e.title}
+
+              <div className="flex-1 min-w-0">
+
+                {/* Title */}
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-0.5">
+                  {event.title}
                 </h3>
-                <p className="text-xs text-muted-foreground">{e.venue}</p>
+
+                {/* Venue */}
+                <p className="font-medium text-sm text-maroon mb-0.5">
+                  {event.venue}
+                </p>
+
+                {/* Address */}
+                <p className="text-xs text-muted-foreground mb-1">
+                  {event.address}
+                </p>
+
+                {/* Time + Date (NO ICON FOR DATE) */}
+                <p className="text-xs text-muted-foreground">
+                  🕐 {event.time}
+                  {event.date && (
+                    <>
+                      {" "}• {formatDate(event.date)}
+                    </>
+                  )}
+                </p>
+
               </div>
             </div>
 
-            {/* Address */}
-            <p className="text-xs text-muted-foreground mb-3">
-              {e.address}
-            </p>
-
-            {/* Time + Date */}
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Clock className="h-3.5 w-3.5 text-gold-dark" />
-              <span>{e.time}</span>
-
-              {e.date && (
-                <>
-                  <span>•</span>
-                  <span>📅 {formatDate(e.date)}</span>
-                </>
-              )}
-            </div>
-
-            {/* Map Button */}
-            {e.mapUrl && (
+            {/* View Location (same style as your screenshot) */}
+            {event.mapUrl && (
               <a
-                href={e.mapUrl}
+                href={event.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 mt-3 text-xs text-gold-dark hover:underline"
+                className="flex items-center gap-1 mt-4 text-sm text-gold-dark font-medium"
               >
-                <MapPin className="h-3.5 w-3.5" />
+                <MapPin className="h-4 w-4" />
                 View Location
               </a>
             )}
 
           </div>
+
         </AnimatedSection>
       ))}
     </div>
